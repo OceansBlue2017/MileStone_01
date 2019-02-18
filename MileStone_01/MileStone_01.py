@@ -22,7 +22,7 @@ Tasks:
 
 
 movies = []    # ''' list to store movies '''
-
+moviesList = []
 '''
 movies = {
     'name' = ...(str),
@@ -36,23 +36,23 @@ def menu():
     
     while user_input != 'q':
         if user_input == 'a':
-           add_movie()
+            add_movie()
         elif user_input == 'l':
-           show_movies()
+            show_movies()
         elif user_input == 'f':
-           find_movie()
+            find_movie()
         else:
-           print("Unknown Command, Please try again")
-    ''' elif user_input =='q':
-        print("Stopping Program....") '''
+            print("Unknown Command, Please try again")
+        '''elif user_input == 'q':
+            print("Stopping Program....") '''   # This would never be used.
 
-    user_input = input("Enter 'a' to add a movie, 'l' to see your list of movies, 'f' to find a movie. 'q' to quit")
+        user_input = input("\nEnter 'a' to add a movie, 'l' to see your list of movies, 'f' to find a movie. 'q' to quit")
 
 
 def add_movie():
-    name = input('Enater the movie name:  ')
+    name = input('Enter the movie name:  ')
     director = input("Enter the movie director's name: ")
-    year = int((input('The year movie produced: '))
+    year = int(input('The year movie produced: '))
 
     movies.append({    # we did add the dictionary inside the append function. appending the dictionary to my list.
         'name': name,
@@ -60,17 +60,29 @@ def add_movie():
         'year': year
     })
 
-"""
-                    OR we can do it like this:
-                                movie = {
-                                    'name': name,
-                                    'director': director,
-                                    'year': year
-                                    }
-                                movie.append(movie)
-"""
+'''
+    OR we can do it like this:
+        movie = {
+            'name': name,
+            'director': director,
+            'year': year
+            }
+        movie.append(movie)
+'''
+
+
+def show_movies():
+    for movie in movies:
+        show_movies_details(movie)
+
+
+def show_movies_details(movie):
+        print(f"\nName: {movie['name']}")
+        print(f"Director: {movie['director']}")
+        print(f"Release Year: {movie['year']}")
+
 
 menu()
 
-print(movies)
+# print(movies)   Not needed after defining the def show_movies():    function
 
